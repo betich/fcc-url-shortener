@@ -46,6 +46,14 @@ async function generateId(url) {
 }
 
 // Your first API endpoint
+app.get('/api/all', (req, res) => {
+  URL.find({})
+    .then((foundURLs) => {
+      res.json({ urls: foundURLs })
+    })
+    .catch((err) => res.json({ error: err }));
+})
+
 app.get('/api/shorturl', (req, res) => {
   res.json({ error: "Please enter a short url id" });
 })
